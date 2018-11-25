@@ -20,7 +20,7 @@ public class WeatherApi {
         public RouterFunction<ServerResponse> routes(WeatherApiHandler weatherApiHandler) {
             return nest(path(API),
                     route(OPTIONS(NA), weatherApiHandler::doPing)
-                            .andRoute(GET(NA), weatherApiHandler::getByZipCode)
+                            .andRoute(GET("/{country}"), weatherApiHandler::getByZipCode)
             );
         }
     }

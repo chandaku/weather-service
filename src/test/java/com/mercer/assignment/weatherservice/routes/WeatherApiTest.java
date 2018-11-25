@@ -25,4 +25,12 @@ class WeatherApiTest {
                 .exchange()
                 .expectStatus().isOk();
     }
+
+    @Test
+    void shouldBeAbleToCallCountryWeatherApi() {
+        webTestClient
+                .get().uri(API_WEATHER + "/usa")
+                .exchange()
+                .expectStatus().isOk();
+    }
 }
