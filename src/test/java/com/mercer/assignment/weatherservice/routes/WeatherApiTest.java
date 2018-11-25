@@ -37,11 +37,11 @@ class WeatherApiTest {
 
 
     @Test
-    void shouldThrowParamsNotFoundWhenZipCodeIsMissing() {
+    void shouldBeBadRequestWhenZipCodeIsMissing() {
         webTestClient
                 .get().uri(API_WEATHER + "/usa?operator=Zip")
                 .exchange()
-                .expectStatus().isNotFound();
+                .expectStatus().isBadRequest();
     }
 
     @Test

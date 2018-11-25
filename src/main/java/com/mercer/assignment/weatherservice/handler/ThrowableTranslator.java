@@ -19,7 +19,7 @@ class ThrowableTranslator {
         if (error instanceof PathNotFoundException) {
             return HttpStatus.NOT_FOUND;
         }else if (error instanceof ParamNotFoundException) {
-            return HttpStatus.NOT_FOUND;
+            return HttpStatus.BAD_REQUEST;
         } else {
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
