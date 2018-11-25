@@ -1,0 +1,3 @@
+User Story: As a user I should be able to see hourly temperature for given zip-code -
+
+Task : Write a service to get Weather data from a third party weather service.

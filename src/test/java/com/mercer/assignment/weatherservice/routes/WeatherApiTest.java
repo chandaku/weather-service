@@ -26,10 +26,36 @@ class WeatherApiTest {
                 .expectStatus().isOk();
     }
 
+
     @Test
-    void shouldBeAbleToCallCountryWeatherApi() {
+    void shouldBeBadRequestWhenOperatorIsMissing() {
         webTestClient
                 .get().uri(API_WEATHER + "/usa")
+                .exchange()
+                .expectStatus().isBadRequest();
+    }
+
+
+    @Test
+    void shouldThrowParamsNotFoundWhenZipCodeIsMissing() {
+        webTestClient
+                .get().uri(API_WEATHER + "/usa?operator=Zip")
+                .exchange()
+                .expectStatus().isNotFound();
+    }
+
+    @Test
+    void shouldRespondOkWhenOperatorIsCity() {
+        webTestClient
+                .get().uri(API_WEATHER + "/usa?operator=City")
+                .exchange()
+                .expectStatus().isOk();
+    }
+
+    @Test
+    void shouldReturnOkWhenZipIsGiven() {
+        webTestClient
+                .get().uri(API_WEATHER + "/usa?operator=Zip&zip=12345")
                 .exchange()
                 .expectStatus().isOk();
     }
