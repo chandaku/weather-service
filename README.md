@@ -10,15 +10,10 @@ Build Project
 ./gradelw clean build
 ```
 
-Run Test case
-```asciidoc
-./gradlew test
-```
-
 To Run Project
 
 ```asciidoc
-./gradlew bootRun -Dhttps://api.darksky.net
+./gradlew bootRun
 ```
 
 After Project is started then run
