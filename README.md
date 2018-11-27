@@ -26,4 +26,5 @@ After Project is started then run
 http://localhost:8080/api/weather/india?operator=Zip&zip=110001
 ```
 
-For Now only supported for two zip code 110001 and 126102.
+For Now only supported for two zip code 110001 and 126102. For now implementation is done with 
+open source api "https://api.darksky.net". 
