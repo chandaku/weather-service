@@ -1,0 +1,9 @@
+weather:
+  service: ${WEATHER_SERVICE_URL}
+
+---
+
+spring:
+  profiles: test
+weather:
+  service: http://localhost:8090

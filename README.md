@@ -18,7 +18,7 @@ Run Test case
 To Run Project
 
 ```asciidoc
-./gradlew bootRun
+./gradlew bootRun -Dhttps://api.darksky.net
 ```
 
 After Project is started then run

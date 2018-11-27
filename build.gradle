@@ -10,7 +10,9 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath 'org.junit.platform:junit-platform-gradle-plugin:1.1.0'
 	}
+
 }
+
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -32,6 +34,8 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-webflux')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('io.projectreactor:reactor-test')
+	testImplementation('com.github.tomakehurst:wiremock-standalone:2.16.0')
+	testCompileOnly('com.github.tomakehurst:wiremock:2.1.12')
 	testCompileOnly('junit:junit:4.12')
 	testImplementation("org.junit.jupiter:junit-jupiter-api:${junit5Version}")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junit5Version}","org.junit.vintage:junit-vintage-engine:${junit5Version}")
