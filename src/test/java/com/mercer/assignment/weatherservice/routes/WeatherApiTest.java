@@ -53,10 +53,10 @@ class WeatherApiTest {
     }
 
     @Test
-    void shouldReturnOkWhenZipIsGiven() {
+    void shouldReturnLocationNotFoundWhenInvalidZipIsGiven() {
         webTestClient
                 .get().uri(API_WEATHER + "/usa?operator=Zip&zip=12345")
                 .exchange()
-                .expectStatus().isOk();
+                .expectStatus().isNotFound();
     }
 }

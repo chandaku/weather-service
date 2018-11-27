@@ -1,5 +1,6 @@
 package com.mercer.assignment.weatherservice.handler;
 
+import com.mercer.assignment.weatherservice.exception.LocationNoFoundException;
 import com.mercer.assignment.weatherservice.exception.ParamNotFoundException;
 import com.mercer.assignment.weatherservice.exception.PathNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,8 @@ class ThrowableTranslator {
             return HttpStatus.NOT_FOUND;
         }else if (error instanceof ParamNotFoundException) {
             return HttpStatus.BAD_REQUEST;
+        } else if (error instanceof LocationNoFoundException) {
+            return HttpStatus.NOT_FOUND;
         } else {
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
