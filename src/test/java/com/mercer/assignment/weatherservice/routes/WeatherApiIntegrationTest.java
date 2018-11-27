@@ -2,6 +2,7 @@ package com.mercer.assignment.weatherservice.routes;
 
 import com.github.tomakehurst.wiremock.common.ConsoleNotifier;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import com.mercer.assignment.weatherservice.model.WeatherReport;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -18,7 +19,7 @@ public class WeatherApiIntegrationTest extends AbstractTestCase{
     public static final String API_WEATHER = "/api/weather";
 
     @Rule
-    public WireMockRule wireMockRule = new WireMockRule(options().port(8090).httpsPort(8443).notifier(new ConsoleNotifier(true)));
+    public WireMockRule wireMockRule = new WireMockRule(options().port(8090).notifier(new ConsoleNotifier(true)));
 
     @Autowired
     private WebTestClient webTestClient;
@@ -39,6 +40,16 @@ public class WeatherApiIntegrationTest extends AbstractTestCase{
                 .get().uri(API_WEATHER + "/usa?operator=Zip&zip=110001")
                 .exchange()
                 .expectStatus().isOk();
+    }
+
+    @Test
+    public void shouldMapToExpectedPayload() {
+        webTestClient
+                .get().uri(API_WEATHER + "/usa?operator=Zip&zip=110001")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(WeatherReport.class)
+                .returnResult().getResponseBody();
     }
 
     private String testBody(){

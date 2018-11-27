@@ -1,5 +1,5 @@
 weather:
-  service: https://api.darksky.net/forecast
+  service: ${WEATHER_SERVICE_URL}
 
 ---
 

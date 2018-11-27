@@ -10,10 +10,8 @@ import reactor.core.publisher.Mono;
 @Service
 class DarkSkyWeatherClient implements WeatherClient {
 
-    //https://api.darksky.net/forecast/e9684ba415437948531cb7222ce5c011/
-
     @Value("${weather.service}")
-    private String WEATHER_SERVICE_URL;
+    private String weatherServiceUrl;
 
     WebClient.Builder webClientBuilder;
 
@@ -23,7 +21,7 @@ class DarkSkyWeatherClient implements WeatherClient {
 
     @Override
     public Mono<WeatherReport> getWeatherReport(Location location) {
-        WebClient webClient = webClientBuilder.baseUrl(WEATHER_SERVICE_URL + "/forecast/e9684ba415437948531cb7222ce5c011/").build();
+        WebClient webClient = webClientBuilder.baseUrl(weatherServiceUrl + "/forecast/e9684ba415437948531cb7222ce5c011/").build();
         return webClient.get().uri("{latitude},{longitude}", location.getLatitude(), location.getLongitude())
                 .retrieve().bodyToMono(WeatherReport.class);
     }

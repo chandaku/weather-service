@@ -29,6 +29,13 @@ repositories {
 }
 
 
+bootRun {
+	if ( project.hasProperty('jvmArgs') ) {
+		jvmArgs project.jvmArgs.split('\\s+')
+	}
+}
+
+
 dependencies {
 
 	implementation('org.springframework.boot:spring-boot-starter-webflux')
